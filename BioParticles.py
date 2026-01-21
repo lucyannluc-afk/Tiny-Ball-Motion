@@ -10,3 +10,5 @@ class Environement:
      self.obstacle_size = obstacle_size
         
      np.random.seed(seed)
+
+def
