@@ -13,8 +13,8 @@ def generate_obstacles(rng, n_obs, obs_size, half_size, margin=0.2):
     s = obs_size
     obstacles = []
 
-    x_min = -h + margin + s / 2
-    x_max = h - margin - s / 2
+    x_min = -h + margin + s / 2 #limite gauche pour le centre
+    x_max = h - margin - s / 2 #limite droite pour le centre
     y_min = -h + margin + s / 2
     y_max = h - margin - s / 2
 
@@ -22,7 +22,7 @@ def generate_obstacles(rng, n_obs, obs_size, half_size, margin=0.2):
         return []
 
     for _ in range(n_obs):
-        cx = rng.uniform(x_min, x_max)
+        cx = rng.uniform(x_min, x_max) #centre x et y aléatoire, pour chaque obstacle on calcule le centre et on fait un rectangle autour
         cy = rng.uniform(y_min, y_max)
         obstacles.append(RectObstacle(cx - s/2, cx + s/2, cy - s/2, cy + s/2))
 
@@ -38,9 +38,9 @@ def generate_balls(rng, n_balls, r_ball, half_size, obstacles, v0=2.0, max_tries
     while len(balls) < n_balls:
         tries += 1
         if tries > max_tries:
-            break
+            break #on évite une boucle infinie
 
-        x = rng.uniform(-h + r_ball, h - r_ball)
+        x = rng.uniform(-h + r_ball, h - r_ball) #position aléatoire
         y = rng.uniform(-h + r_ball, h - r_ball)
 
         # Éviter les obstacles
