@@ -8,7 +8,7 @@ from ball import Ball, RectObstacle, World
 
 
 def generate_obstacles(rng, n_obs, obs_size, half_size, margin=0.2):
-    """Génère des obstacles carrés aléatoirement placés"""
+   #génération d'obstacles placés aléatoirement
     h = half_size
     s = obs_size
     obstacles = []
@@ -30,7 +30,7 @@ def generate_obstacles(rng, n_obs, obs_size, half_size, margin=0.2):
 
 
 def generate_balls(rng, n_balls, r_ball, half_size, obstacles, v0=2.0, max_tries=5000):
-    """Place les balles aléatoirement en évitant les obstacles"""
+   # on place aléatoirement les balles en évitant les obstacles
     h = half_size
     balls = []
 
@@ -216,7 +216,7 @@ class BallSimulationGUI:
         self.ax.set_ylabel("y")
 
     def draw_balls(self):
-        """Dessine les balles et trajectoires"""
+    
         # Redessiner les éléments statiques
         self.draw_static()
 
@@ -236,14 +236,14 @@ class BallSimulationGUI:
         self.canvas.draw()
 
     def toggle_simulation(self):
-        """Démarre/arrête la simulation"""
+        
         self.running = not self.running
         self.start_btn.config(text="Stop" if self.running else "Start")
         if self.running:
             self.animate()
 
     def animate(self):
-        """Boucle d'animation"""
+       
         if not self.running or self.world is None:
             return
 
@@ -265,7 +265,7 @@ class BallSimulationGUI:
         self.root.after(33, self.animate)
 
     def update_info(self):
-        """Met à jour les infos"""
+       
         if self.world:
             total_energy = sum(ball.kinetic_energy for ball in self.world.balls)
             self.energy_label.config(text=f"Energie totale: {total_energy:.2f}")
@@ -273,12 +273,12 @@ class BallSimulationGUI:
             self.time_label.config(text=f"Temps: {self.time:.2f}")
 
     def clear_canvas(self):
-        """Efface le canvas"""
+       
         self.ax.clear()
         self.canvas.draw()
 
     def run(self):
-        """Lance l'interface"""
+        
         self.root.mainloop()
 
 
